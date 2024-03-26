@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="https://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:padding="2dp"
+	android:orientation="vertical"
+	android:background="@drawable/back_term"
+	tools:context=".IfcfgWidget">
+	<TextView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:textSize="10sp"
+		android:padding="5dp"
+		android:text="Informações de Rede"
+		android:textColor="#bdff00"
+		android:textAlignment="center"
+		android:textIsSelectable="true"
+		android:fontFamily="@font/SourceCodePro-Medium"
+		/>
+	<TextView
+		android:id="@+id/txwifcfg"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:textSize="6sp"
+		android:padding="5dp"
+		android:textColor="#bdff00"
+		android:textAlignment="center"
+		android:textIsSelectable="true"
+		android:fontFamily="@font/SourceCodePro-Medium"
+		/>
+</LinearLayout>
