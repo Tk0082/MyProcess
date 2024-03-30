@@ -5,5 +5,17 @@
     "groupId": "androidx.swiperefreshlayout",
     "scope": "compile",
     "versionName": "1.1.0"
+  },
+  {
+    "artifactId": "material",
+    "excludes": [],
+    "groupId": "com.google.android.material",
+    "versionName": "1.12.0-alpha03"
+  },
+  {
+    "artifactId": "design",
+    "excludes": [],
+    "groupId": "com.android.support",
+    "versionName": "28.0.0"
   }
 ]

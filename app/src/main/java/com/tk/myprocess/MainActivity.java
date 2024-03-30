@@ -171,6 +171,7 @@ public class MainActivity extends Activity {
 		n = 0;
 		super.onStop();
 	}
+}
 
 	/*
 	public void scroolZoom(View v) {
