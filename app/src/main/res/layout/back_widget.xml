@@ -1,32 +1,38 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="https://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-	android:padding="2dp"
-	android:orientation="vertical"
-	android:background="@drawable/back_term"
-	tools:context=".IfcfgWidget">
-	<TextView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:textSize="10sp"
-		android:padding="5dp"
-		android:text="Informações de Rede"
-		android:textColor="#bdff00"
-		android:textAlignment="center"
-		android:textIsSelectable="true"
-		android:fontFamily="@font/SourceCodePro-Medium"
-		/>
-	<TextView
-		android:id="@+id/txwifcfg"
+	android:elevation="5dp"
+	android:background="@color/blacktranparent" >
+	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:textSize="6sp"
-		android:padding="5dp"
-		android:textColor="#bdff00"
-		android:textAlignment="center"
-		android:textIsSelectable="true"
-		android:fontFamily="@font/SourceCodePro-Medium"
-		/>
-</LinearLayout>
+		android:orientation="vertical"
+		android:padding="2dp"
+		android:gravity="center"
+		android:background="@color/transparent">
+		<TextView
+			android:id="@+id/txtitulo"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="10sp"
+			android:padding="5dp"
+			android:text="Informações de Rede"
+			android:textColor="#bdff00"
+			android:textAlignment="center"
+			android:textIsSelectable="true"
+			android:fontFamily="@font/SourceCodePro-Medium"
+			/>
+		<TextView
+			android:id="@+id/txifcfg"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:textSize="6sp"
+			android:padding="5dp"
+			android:textColor="#bdff00"
+			android:textAlignment="center"
+			android:textIsSelectable="true"
+			android:fontFamily="@font/SourceCodePro-Medium"
+			/>
+	</LinearLayout>
+</RelativeLayout>
