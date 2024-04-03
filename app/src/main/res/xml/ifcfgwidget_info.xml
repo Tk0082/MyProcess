@@ -6,7 +6,6 @@
 	android:previewLayout="@layout/back_widget"
 	android:minWidth="80dp"
     android:minHeight="40dp"
-	android:previewImage="@mipmap/termicon"
     android:targetCellWidth="3"
     android:targetCellHeight="2"
 	android:resizeMode="horizontal|vertical"

@@ -28,7 +28,7 @@
 			android:id="@+id/imgit"
 			android:layout_width="35dp"
 			android:layout_height="35dp"
-			android:src="@mipmap/git"
+			android:src="@mipmap/icgit"
 			android:layout_margin="5dp" />
 		<TextView
 			android:id="@+id/txgit"
@@ -52,9 +52,9 @@
 		android:gravity="center" >
 		<ImageView
 			android:id="@+id/imgmail"
-			android:layout_width="33dp"
-			android:layout_height="33dp"
-			android:src="@mipmap/mail"
+			android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:src="@mipmap/icmail"
 			android:layout_margin="5dp" />
 		<TextView
 			android:id="@+id/txmail"

@@ -18,8 +18,11 @@
 package com.tk.myprocess;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.webkit.WebResourceError;
@@ -29,7 +32,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,6 +44,7 @@ public class BrowserActivity extends Activity {
 	Intent i;
 	TextView uname, who;
 	SwipeRefreshLayout swp;
+	AlertDialog.Builder ad;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceSatate) {
@@ -63,6 +69,14 @@ public class BrowserActivity extends Activity {
 			@Override
 			public void onRefresh() {
 				webview.reload();
+			}
+		});
+		
+		webview.setOnLongClickListener(new View.OnLongClickListener(){
+			@Override
+			public boolean onLongClick(View v) {
+				dialog("Deseja abrir no Navegador?");
+			    return false;
 			}
 		});
 		
@@ -136,4 +150,22 @@ public class BrowserActivity extends Activity {
             super.onReceivedError(view, request, error);
         }
 	}
+	
+	public void dialog(final String _text) {
+		String url = webview.getUrl().toString();
+        ad = new AlertDialog.Builder(BrowserActivity.this);
+        ad.setTitle("Abrir no Navegador");
+        ad.setMessage(_text);
+        ad.setCancelable(true);
+
+        ad.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int wich) {
+                i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+				startActivity(i);
+				finish();
+            }
+        });
+        ad.create();
+        ad.show();
+    }
 }
