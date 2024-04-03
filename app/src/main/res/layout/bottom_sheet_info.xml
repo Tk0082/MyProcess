@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:background="@drawable/back_info"
+	android:elevation="5dp"
+	android:gravity="center"
+    android:orientation="vertical">
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:fontFamily="@font/SourceCodePro-Medium"
+		android:text="Contato"
+		android:textColor="@color/limed"
+		android:textSize="22sp"
+		android:textStyle="bold"
+		android:gravity="center" />
+	<LinearLayout
+		android:id="@+id/lgithub"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@drawable/back_term"
+		android:padding="5dp"
+		android:layout_marginTop="5dp"
+		android:gravity="center" >
+		<ImageView
+			android:id="@+id/imgit"
+			android:layout_width="35dp"
+			android:layout_height="35dp"
+			android:src="@mipmap/git"
+			android:layout_margin="5dp" />
+		<TextView
+			android:id="@+id/txgit"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="github.com/Tk0082"
+			android:fontFamily="@font/SourceCodePro-Medium"
+			android:textSize="18sp"
+			android:textColor="@color/limel"
+			android:textAlignment="textStart"
+			android:layout_margin="5dp" />
+	</LinearLayout>
+	<LinearLayout
+		android:id="@+id/lmail"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@drawable/back_term"
+		android:padding="5dp"
+		android:layout_marginVertical="5dp"
+		android:gravity="center" >
+		<ImageView
+			android:id="@+id/imgmail"
+			android:layout_width="33dp"
+			android:layout_height="33dp"
+			android:src="@mipmap/mail"
+			android:layout_margin="5dp" />
+		<TextView
+			android:id="@+id/txmail"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="tk0082@hotmail.com"
+			android:fontFamily="@font/SourceCodePro-Medium"
+			android:textSize="18sp"
+			android:textColor="@color/limel"
+			android:textAlignment="textStart"
+			android:layout_margin="5dp" />
+	</LinearLayout>
+</LinearLayout>

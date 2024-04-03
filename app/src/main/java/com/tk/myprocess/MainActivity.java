@@ -1,19 +1,46 @@
+/*
+ * Copyright 2024 Alan Souza(tk0082@hotmail.com - github.com/Tk0082)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+
 package com.tk.myprocess;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.PointF;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import android.widget.Toast;
+import androidx.core.view.GravityCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import java.io.BufferedReader;
 import java.io.File;
@@ -39,6 +66,7 @@ public class MainActivity extends Activity {
 	private TimerTask t;
 	private ProgressBar progress;
 	private int n, c;
+	Intent i;
 	/*float[] lastEvent = null;
 	float d = 0f; 	float newRot = 0f;
 	float oldDist = 1f;
@@ -59,7 +87,7 @@ public class MainActivity extends Activity {
 		
 		n = 0;
 		refreshLayout = findViewById(R.id.refresh);
-		refreshLayout.setColorScheme(R.color.limed, R.color.limel);
+		refreshLayout.setColorScheme(R.color.limel);
 		sv = findViewById(R.id.scroll);
 		ifconfig = findViewById(R.id.txifconfig);
 		uname = findViewById(R.id.txuname);
@@ -104,9 +132,13 @@ public class MainActivity extends Activity {
 					refreshLayout.setRefreshing(false);
 				}
 			});
-		} 
-		//scroolZoom(ps); 
+		}
 		
+		who.setOnClickListener(view->{
+			showDialog();
+		});
+		
+		//scroolZoom(ps); 
 	}
 
 	public void commands() {
@@ -148,6 +180,47 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		}
 		return cmdOut.toString();
+	}
+	
+	private void showDialog(){
+		final Dialog dialog = new Dialog(this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.bottom_sheet_info);
+		
+		LinearLayout infogit = dialog.findViewById(R.id.lgithub);
+		LinearLayout infomail = dialog.findViewById(R.id.lmail);
+		TextView txmail = dialog.findViewById(R.id.txmail);
+		TextView txgit = dialog.findViewById(R.id.txgit);
+		
+		infogit.setOnClickListener(view ->{
+			dialog.dismiss();
+			//String git = "https://github.com/Tk0082";
+			String nm, id;
+			nm = uname.getText().toString();
+			id = who.getText().toString();
+            i = new Intent(this, BrowserActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            i.setType("text/plain");
+            i.putExtra("nm", nm);
+			i.putExtra("id", id);
+            startActivity(i);
+			finish();
+		});
+		
+		infomail.setOnClickListener(view ->{
+			i = new Intent(Intent.ACTION_SENDTO);
+            i.setType("text/mail");
+            i.setData(Uri.parse("mailto:"+txmail.getText()));
+            i.putExtra(Intent.EXTRA_TEXT, "Envie seu feedback..");
+            startActivity(Intent.createChooser(i, "Feedback MyProcess"));
+			dialog.dismiss();
+		});
+		
+		dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+		dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+		dialog.getWindow().getAttributes().windowAnimations = R.style.AnimationDialog;
+		dialog.getWindow().setGravity(Gravity.BOTTOM);
+		dialog.show();
 	}
 
 	@Override
@@ -263,5 +336,5 @@ public class MainActivity extends Activity {
 	public boolean onTouch(View arg0, MotionEvent arg1) {
 	    return false;
 	}
-	*/ 
-}
+} */
+	

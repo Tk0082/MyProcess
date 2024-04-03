@@ -10,4 +10,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
         <!-- Customize your theme here. -->
     </style>
+	<style name="AnimationDialog" parent="Theme.MyApplication">
+		<item name="android:windowEnterAnimation">@anim/slide_in</item>
+		<item name="android:windowExitAnimation">@anim/slide_out</item>
+	</style>
 </resources>

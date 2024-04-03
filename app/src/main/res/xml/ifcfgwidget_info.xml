@@ -3,14 +3,14 @@
     xmlns:android="https://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/back_widget"
     android:initialLayout="@layout/back_widget"
+	android:previewLayout="@layout/back_widget"
 	android:minWidth="80dp"
     android:minHeight="40dp"
 	android:previewImage="@mipmap/termicon"
-	android:previewLayout="@layout/back_widget"
     android:targetCellWidth="3"
     android:targetCellHeight="2"
 	android:resizeMode="horizontal|vertical"
 	android:updatePeriodMillis="86400000"
 	android:widgetCategory="home_screen" 
-    android:widgetFeatures="reconfigurable|configuration_optional"
-    />
+    android:widgetFeatures="reconfigurable|configuration_optional" >
+</appwidget-provider>

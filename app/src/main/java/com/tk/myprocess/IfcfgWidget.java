@@ -23,14 +23,13 @@ public class IfcfgWidget extends AppWidgetProvider {
 		for (int i=0; i < appIds.length; i++) {
 			int appWidgetId = appIds[i];
 			
-			Intent intent = new Intent(context, MainActivity.class);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appIds);
+			//Intent intent = new Intent(context, MainActivity.class);
+			//PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0); //PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+			//intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+			//intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appIds);
 			
 			rt.setText("Rede: "+ RunCommand("su -c /system/bin/ip route"));
 			ifc.setText(RunCommand("su -c /system/bin/ifconfig wlan0"));
-			
 			
 			RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.back_widget);
 			remoteViews.setTextViewText(R.id.txtitulo, rt.toString());

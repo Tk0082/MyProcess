@@ -7,15 +7,9 @@
     "versionName": "1.1.0"
   },
   {
-    "artifactId": "material",
+    "artifactId": "webkit",
     "excludes": [],
-    "groupId": "com.google.android.material",
-    "versionName": "1.12.0-alpha03"
-  },
-  {
-    "artifactId": "design",
-    "excludes": [],
-    "groupId": "com.android.support",
-    "versionName": "28.0.0"
+    "groupId": "androidx.webkit",
+    "versionName": "1.8.0"
   }
 ]
