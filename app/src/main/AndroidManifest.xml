@@ -27,9 +27,11 @@
 	<uses-permission android:name="android.permission.MANAGER_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<uses-permission android:name="android.permission.BIND_APPWIDGET" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />
 	<uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND" />
+	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+	<uses-permission android:name="android.permission.BIND_APPWIDGET" />
+	
 	
     <application
         android:allowBackup="true"
@@ -70,14 +72,17 @@
 		</activity >
 		<receiver
 			android:name=".IfcfgWidget"
-			android:exported="true" >
+			android:exported="false" >
 			<intent-filter>
-				<action android:name="android.appwi dget.action.APPWIDGET_UPDATE" />
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
 			<meta-data
 				android:name="android.appwidget.provider"
 				android:resource="@xml/ifcfgwidget_info" />
 		</receiver>
+		<receiver 
+			android:name=".WidgetService"
+			android:enabled="true" />
 		<uses-library android:name="org.apache.http.legacy" android:required="false" />
 		<meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
 		</application>

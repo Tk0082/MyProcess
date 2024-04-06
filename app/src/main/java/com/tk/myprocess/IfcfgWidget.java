@@ -12,30 +12,53 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.StringBuffer;
 import java.lang.Process;
+import java.lang.CharSequence;
+import java.lang.String;
+import java.lang.Runtime;
+import java.lang.InterruptedException;
 
 public class IfcfgWidget extends AppWidgetProvider {
 	
-	TextView ifc, rt;
-	Intent intent;
+	static String ifc, rt;
+	static String CLICK_ACTION = "CLICKED";
+	
+	@Override
+	public void onReceive(Context context, Intent intent){
+		super.onReceive(context, intent);
+		if(intent.getAction().equals(CLICK_ACTION)){
+			rt = "Rede: "+ RunCommand("su -c /system/bin/ip route");
+			ifc = RunCommand("su -c /system/bin/ifconfig wlan0");
+		}
+	}
+	
+	static void updateAppWidget(Context context, AppWidgetManager widgetManager, int widgetId){
+		
+		Intent i = new Intent(context, IfcfgWidget.class);
+		i.setAction(CLICK_ACTION);
+		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, 0); 
+		
+		rt = "Rede: "+ RunCommand("su -c /system/bin/ip route");
+		ifc = RunCommand("su -c /system/bin/ifconfig wlan0");
+		
+		/*
+			intent = new Intent(context, IfcfgWidget.class);
+			//PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appIds);
+			*/
+			
+		RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.back_widget);
+		remoteViews.setTextViewText(R.id.txtitulo, rt);
+		remoteViews.setTextViewText(R.id.txifcfg, ifc);
+		remoteViews.setOnClickPendingIntent(R.id.widget, pendingIntent);
+		
+		widgetManager.updateAppWidget(widgetId, remoteViews);
+	}
 	
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appManager, int[] appIds) {
-		
 		for (int widgetId : appIds) {
-			
-			intent = new Intent(context, MainActivity.class);
-			PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0); //PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
-			intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-			intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appIds);
-			
-			rt.setText("Rede: "+ RunCommand("su -c /system/bin/ip route"));
-			ifc.setText(RunCommand("su -c /system/bin/ifconfig wlan0"));
-			
-			RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.back_widget);
-			remoteViews.setTextViewText(R.id.txtitulo, rt.toString());
-			remoteViews.setTextViewText(R.id.txifcfg, ifc.toString());
-			
-			appManager.updateAppWidget(appIds, remoteViews);
+			updateAppWidget(context, appManager, widgetId);
 		}
 	}
 	
