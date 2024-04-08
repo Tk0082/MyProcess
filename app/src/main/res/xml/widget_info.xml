@@ -1,0 +1,13 @@
+<appwidget-provider xmlns:android="https://schemas.android.com/apk/res/android" 
+	xmlns:tools="http://schemas.android.com/tools"
+	android:initialLayout="@layout/back_widget" 
+	android:preview_image="@layout/back_widget"
+    android:targetCellWidth="3"
+    android:targetCellHeight="2"
+    android:minResizeWidth="40dp"
+    android:minResizeHeight="40dp"
+	android:resizeMode="horizontal|vertical" 
+	android:updatePeriodMillis="5600000" 
+	android:widgetCategory="home_screen"
+	tools:targetApi="s" >
+</appwidget-provider>

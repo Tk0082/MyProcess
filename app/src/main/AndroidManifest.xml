@@ -31,7 +31,8 @@
 	<uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND" />
 	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
 	<uses-permission android:name="android.permission.BIND_APPWIDGET" />
-	
+	<uses-permission android:name="android.permission.GET_TASKS" />
+	<uses-permission android:name="android.permission.REORDER_TASKS" /> 
 	
     <application
         android:allowBackup="true"
@@ -70,19 +71,16 @@
 				<data android:scheme="udp" />
 			</intent-filter >
 		</activity >
-		<receiver
-			android:name=".IfcfgWidget"
-			android:exported="false" >
+		<receiver 
+			android:name=".LanWidget"
+			android:enabled="true" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>
 			<meta-data
 				android:name="android.appwidget.provider"
-				android:resource="@xml/ifcfgwidget_info" />
+				android:resource="@xml/widget_info" />
 		</receiver>
-		<receiver 
-			android:name=".WidgetService"
-			android:enabled="true" />
 		<uses-library android:name="org.apache.http.legacy" android:required="false" />
 		<meta-data android:name="android.webkit.WebView.MetricsOptOut" android:value="true" />
 		</application>
