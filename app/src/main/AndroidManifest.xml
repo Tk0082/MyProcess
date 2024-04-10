@@ -72,8 +72,8 @@
 			</intent-filter >
 		</activity >
 		<receiver 
-			android:name=".LanWidget"
-			android:enabled="true" >
+			android:name="LanWidget"
+			android:exported="false" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>

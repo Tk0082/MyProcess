@@ -22,9 +22,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.view.View;
@@ -153,7 +155,7 @@ public class BrowserActivity extends Activity {
 	
 	public void dialog(final String _text) {
 		String url = webview.getUrl().toString();
-        ad = new AlertDialog.Builder(BrowserActivity.this);
+        ad = new AlertDialog.Builder(BrowserActivity.this , R.style.MyDialogTheme);
         ad.setTitle("Abrir no Navegador");
         ad.setMessage(_text);
         ad.setCancelable(true);
@@ -167,5 +169,5 @@ public class BrowserActivity extends Activity {
         });
         ad.create();
         ad.show();
-    }
+	}
 }

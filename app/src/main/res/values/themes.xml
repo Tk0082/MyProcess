@@ -1,17 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Tema Base da Applicação -->
     <style name="Theme.MyApplication" parent="android:Theme.Material.Light.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="android:colorPrimary">@color/purple_500</item>
+        <item name="android:colorPrimary">@color/limed</item>
 		<item name="android:colorAccent">@color/limed</item>
-        <!-- Secondary brand color. -->
         <item name="android:colorSecondary">@color/limed</item>
-        <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/black</item>
-        <!-- Customize your theme here. -->
     </style>
+	<!-- Efeito Slide do MenuBottom -->
 	<style name="AnimationDialog" parent="Theme.MyApplication">
 		<item name="android:windowEnterAnimation">@anim/slide_in</item>
 		<item name="android:windowExitAnimation">@anim/slide_out</item>
 	</style>
+	<!-- Estilo do dialog -->
+	<style name="MyDialogTheme" parent="android:Theme.Material.Light.Dialog.Alert">
+ 	   <item name="android:background">@color/greyl</item>
+		<item name="android:colorAccent">@color/limed</item>
+		<item name="android:colorPrimary">@color/limed</item>
+		<item name="android:textColor">@color/limel</item>
+		<item name="android:buttonBarPositiveButtonStyle">@style/ColorButtonDialog</item>
+		<item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+	</style>
+	<!-- Estilo do Botão do Dialog -->
+	<style name="ColorButtonDialog" parent="Theme.MyApplication">
+		<item name="android:backgroundTint">@color/limed</item>
+		<item name="android:textColor">@color/greyd</item>
+	</style>
+	
 </resources>
