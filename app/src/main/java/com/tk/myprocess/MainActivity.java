@@ -59,7 +59,7 @@ import java.util.concurrent.ExecutorService;
 
 public class MainActivity extends Activity {
 
-	private TextView ifconfig, uname, netstat, df, ps, who, ss, cal;
+	private TextView ifconfig, uname, netstat, df, ps, who, ss, cal, free;
 	private SwipeRefreshLayout refreshLayout;
 	private ScrollView sv;
 	private Timer timer;
@@ -67,6 +67,7 @@ public class MainActivity extends Activity {
 	private ProgressBar progress;
 	private int n, c;
 	Intent i;
+	private String rt, txfree;
 	/*float[] lastEvent = null;
 	float d = 0f; 	float newRot = 0f;
 	float oldDist = 1f;
@@ -97,6 +98,7 @@ public class MainActivity extends Activity {
 		who = findViewById(R.id.txwho);
 		ss = findViewById(R.id.txss);
 		cal = findViewById(R.id.txcal);
+		free = findViewById(R.id.txfree);
 
 		sv.requestFocus(View.FOCUS_UP);
 		sv.scrollTo(0, 0);
@@ -142,13 +144,14 @@ public class MainActivity extends Activity {
 	}
 
 	public void commands() {
-		String rt = RunCommand("su -c /system/bin/ip route");
+		rt = RunCommand("su -c /system/bin/ip route");
 		uname.setText(RunCommand("/system/bin/uname -osmsr"));
 		who.setText(RunCommand("/system/bin/whoami"));
 		who.setTextColor(Color.parseColor("#FF20D600"));
 
 		ifconfig.setText("# REDE =========\n\n" + rt + "\n" + RunCommand("su -c /system/bin/ifconfig wlan0") + "\n");
 		cal.setText(RunCommand("/system/bin/cal"));
+		free.setText("# FREE =========\n\n" + RunCommand("free -h"));
 		netstat.setText("# NETSTAT =========\n\n" + RunCommand("su -c /system/bin/netstat -planetu"));
 		df.setText("# DF =========\n\n" + RunCommand("/system/bin/df -h"));
 		ss.setText("# SS =========\n\n" + RunCommand("su -c ss -traps"));
