@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 	private ProgressBar progress;
 	private int n, c;
 	Intent i;
-	private String rt, txfree;
+	private String rt, txfree, txf;
 	/*float[] lastEvent = null;
 	float d = 0f; 	float newRot = 0f;
 	float oldDist = 1f;
@@ -145,13 +145,16 @@ public class MainActivity extends Activity {
 
 	public void commands() {
 		rt = RunCommand("su -c /system/bin/ip route");
+		txf = RunCommand("su -c /system/bin/free -h | grep -E total");
+		txfree = RunCommand("su -c /system/bin/free -h | grep -E 'Mem|Swap'");
+		
 		uname.setText(RunCommand("/system/bin/uname -osmsr"));
 		who.setText(RunCommand("/system/bin/whoami"));
 		who.setTextColor(Color.parseColor("#FF20D600"));
 
 		ifconfig.setText("# REDE =========\n\n" + rt + "\n" + RunCommand("su -c /system/bin/ifconfig wlan0") + "\n");
 		cal.setText(RunCommand("/system/bin/cal"));
-		free.setText("# FREE =========\n\n" + RunCommand("free -h"));
+		free.setText("# FREE =========\n" + "\t\t\t\t\t\t\t"+txf + txfree);
 		netstat.setText("# NETSTAT =========\n\n" + RunCommand("su -c /system/bin/netstat -planetu"));
 		df.setText("# DF =========\n\n" + RunCommand("/system/bin/df -h"));
 		ss.setText("# SS =========\n\n" + RunCommand("su -c ss -traps"));
@@ -197,7 +200,6 @@ public class MainActivity extends Activity {
 		
 		infogit.setOnClickListener(view ->{
 			dialog.dismiss();
-			//String git = "https://github.com/Tk0082";
 			String nm, id;
 			nm = uname.getText().toString();
 			id = who.getText().toString();
@@ -214,6 +216,7 @@ public class MainActivity extends Activity {
 			i = new Intent(Intent.ACTION_SENDTO);
             i.setType("text/mail");
             i.setData(Uri.parse("mailto:"+txmail.getText()));
+			i.putExtra(Intent.EXTRA_SUBJECT, "Feedback MyProcess App");
             i.putExtra(Intent.EXTRA_TEXT, "Envie seu feedback..");
             startActivity(Intent.createChooser(i, "Feedback MyProcess"));
 			dialog.dismiss();
