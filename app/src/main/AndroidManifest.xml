@@ -18,7 +18,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tk.myprocess"
     android:versionCode="1"
-	android:versionName="1.3">
+	android:versionName="1.4">
     
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -71,8 +71,8 @@
 			</intent-filter >
 		</activity >
 		<receiver 
-			android:name="LanWidget"
-			android:exported="true" >
+			android:name=".LanWidget"
+			android:exported="false" >
 			<intent-filter>
 				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
 			</intent-filter>

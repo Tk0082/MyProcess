@@ -6,6 +6,9 @@ import android.app.PendingIntent;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.lang.StringBuffer;
+import java.lang.Process;
+import java.lang.Runnable;
 import android.appwidget.AppWidgetProvider;
 import android.widget.RemoteViews;
 import android.content.Intent;
@@ -24,7 +27,6 @@ public class LanWidget extends AppWidgetProvider{
 		}
 	}
 	
-		
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appManager, int[] appIds) {
 		for (int widgetId : appIds) {
@@ -35,6 +37,7 @@ public class LanWidget extends AppWidgetProvider{
 	static void updateAppWidget(Context context, AppWidgetManager widgetManager, int widgetId){
 		
 		Intent i = new Intent(context, LanWidget.class);
+		i.setAction(CLICK_ACTION);
 		PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, i, 0); 
 		
 		String rt = "Rede: "+ RunCommand("su -c /system/bin/ip route");
